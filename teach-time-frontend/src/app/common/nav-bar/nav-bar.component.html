@@ -1,0 +1,75 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <button><i class="bi bi-bell"></i></button>
+    <img class="navbar-logo" src="images/teach_time_logo.png" alt="">
+    <!-- <a class="navbar-brand" href="#">Offcanvas navbar</a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Teach Time</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-box-arrow-right" style="margin-right: 2em;"></i>Log out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-house" style="margin-right: 2em;"></i>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-person" style="margin-right: 2em;"></i>Profile</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-lines-fill" style="margin-right: 2em;"></i>Contact Us
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-telephone" style="margin-right: 2em;"></i>Contact</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-chat-right-dots" style="margin-right: 2em;"></i>Feed back</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-gear" style="margin-right: 2em;"></i>App Settings
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="bi bi-translate" style="margin-right: 2em;"></i>Select Language</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-clockwise" style="margin-right: 2em;"></i>Reset App</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-menu-button-wide" style="margin-right: 2em;"></i>About App</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-terminal" style="margin-right: 2em;"></i>Terms & Conditions</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-share" style="margin-right: 2em;"></i>invite Friends</a>
+          </li>
+          
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

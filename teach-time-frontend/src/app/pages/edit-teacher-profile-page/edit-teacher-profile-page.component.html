@@ -1,0 +1,62 @@
+<div class="main">
+    <div class="profile-pic col-md-4">
+        <img src="images/sample_profile_pic.jpeg" alt="">
+        <button type="submit" class="edit-profile-pic-btn"><i class="bi bi-camera" style="margin-right: 1em;"></i>Edit</button>
+    </div>
+    <div class="profile-details col-md-8">
+        <label for="registerId">Your Registration ID</label>
+        <input type="text" id="registerId">
+        <label for="name">Name</label>
+        <div class="edit-field">
+            <input type="text" id="editName">
+            <button class="icon-button" onclick="editField('name')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+        <label for="email">School Name</label>
+        <div class="edit-field">
+            <input type="text" id="editSclName">
+            <button class="icon-button" onclick="editField('sclName')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+        <label for="email">Subject</label>
+        <div class="edit-field">
+            <input type="text" id="editSubject">
+            <button class="icon-button" onclick="editField('subject')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+        <label for="email">Contact Number</label>
+        <div class="edit-field">
+        <input type="text" id="editContactNo">
+        <button class="icon-button" onclick="editField('contact')">
+            <i class="bi bi-pen"></i>
+        </button>
+        </div>
+        <label for="email">Email</label>
+        <div class="edit-field">
+            <input type="email" id="editEmail">
+            <button class="icon-button" onclick="editField('email')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+        <label for="email">User Name</label>
+        <div class="edit-field">
+            <input type="text" id="editUserName">
+            <button class="icon-button" onclick="editField('userName')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+        <label for="email">Password</label>
+        <div class="edit-field">
+            <input type="password" id="editpassword">
+            <button class="icon-button" onclick="editField('password')">
+                <i class="bi bi-pen"></i>
+            </button>
+        </div>
+    </div>
+    <div class="save-profile-btn">
+        <button type="button" class="btn btn-primary">submit</button>
+    </div>
+</div>

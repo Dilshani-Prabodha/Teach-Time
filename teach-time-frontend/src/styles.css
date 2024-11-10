@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.blue-background {
+    background-color: #6A89CC;
+    color: white; 
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('/images/bg_design.png');
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

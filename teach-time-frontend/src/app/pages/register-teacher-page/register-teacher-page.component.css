@@ -1,0 +1,162 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container h1{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    text-decoration: dotted;
+    color: #333;
+    font-size: 40px;
+    margin-top: 0.5%;
+}
+/* .left-side {
+    flex: 1;
+    background-color: #3f3f83;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 20px;
+} */
+
+/* .left-side h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+} */
+
+/* .right-side {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+} */
+
+.left-side h1 {
+    position: absolute;
+    top: 5%; /* Adjust as needed */
+}
+
+.left-side p{
+    color: #3f3d3d;
+    margin-top: 30%;
+}
+
+.illustration img{
+    margin-bottom: 20%; /* Adjust as needed */
+    width: 300px;
+}
+
+.register-frame {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    max-width: 400px;
+    height: 540px;
+    background-color: rgba(248, 248, 248, 0.3);;
+    padding: 30px;
+    padding-top: 1%;
+    margin-top: 10%;
+    margin-left: 5%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.register-frame h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.register-frame p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.register-frame form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .login-frame label {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+} */
+
+.register-frame input {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.register-btn {
+    padding: 5px;
+    background-color: #1224b1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+/* .google-login-btn {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+} */
+
+/* .or-divider {
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #666;
+} */
+
+.log-in {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.log-in a {
+    color: #1224b1;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+    .right-side {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+    }
+    .left-side {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+}

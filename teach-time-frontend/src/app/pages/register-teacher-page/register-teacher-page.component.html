@@ -1,0 +1,36 @@
+<div class="blue-background">
+    <!-- Your login form content here -->
+
+    <div class="container">
+        <div class="left-side col-md-6 col-sm-12">
+            <h1>WELCOME</h1>
+            <p>
+                The TeachTime registration page offers a quick, simple setup for teachers, granting instant access to
+                their personalized timetables. By registering, teachers can easily manage their daily schedules, assign
+                tasks, and monitor progress, creating a more organized and productive teaching experience.</p>
+            <div class="illustration">
+                <img src="images/teach_time_logo.png" alt="">
+            </div>
+        </div>
+        <div class="right-side col-md-6 col-sm-12">
+            <div class="register-frame">
+                <h2>Register with Teach Time</h2>
+                <p>Create to your account</p>
+                <form>
+                    <input type="text" id="regiName" placeholder="Name" required>
+                    <input type="text" id="regiSclName" placeholder="School Name" required>
+                    <input type="text" id="regiSubject" placeholder="Subject" required>
+                    <input type="text" id="regiContactNo" placeholder="Contact Number" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="text" id="regiUserName" placeholder="User Name" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div class="options">
+                        <label><input type="checkbox"> I confirm that the above information is true.</label>
+                    </div>
+                    <button type="submit" class="register-btn" (click)="navigateToCreateTimeTablePage()">Sign Up</button>
+                </form>
+                <p class="log-in">Already have an account? <a href="#">Log in here</a></p>
+            </div>
+        </div>
+    </div>
+</div>

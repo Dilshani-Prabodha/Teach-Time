@@ -1,0 +1,113 @@
+/* Universal and body styling */
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+.main-confirm-table {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.confirm-heading{
+    position: absolute;
+    color: #000;
+    top: 2%;
+}
+
+/* Table container styling */
+.table-container {
+    position: relative;
+    top: 25px;
+    width: 150%;
+    max-width: 800px;
+    background-color: rgba(248, 248, 248, 0.5);
+    padding: 20px;
+    padding-right: 280px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling */
+table {
+    width: 150%;
+    border-collapse: collapse;
+}
+
+/* Header row styling */
+thead th {
+    background-color: #a8c4e1;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Period cells styling */
+tbody td {
+    padding: 10px;
+    border: 1px solid #888;
+    text-align: center;
+}
+
+/* Day headers and data styling */
+tbody td:first-child {
+    font-weight: bold;
+}
+
+/* Day names */
+.day-name {
+    color: #2b6cb3;
+    font-weight: bold;
+}
+
+/* Data cells in red */
+.period-data {
+    color: red;
+    font-weight: bold;
+}
+
+/* Button styling */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.back-button {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #000;
+    
+}
+
+.next-button {
+    position: relative;
+    left: 50%;
+    background-color: #0baa68;
+    color: white;
+}
+
+.back-button:hover {
+    background-color: #ddd;
+}
+
+.next-button:hover {
+    background-color: #0b8b56;
+}
