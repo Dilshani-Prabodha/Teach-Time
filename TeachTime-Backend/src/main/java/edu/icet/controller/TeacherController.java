@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/teacher")
 @RequiredArgsConstructor
+@CrossOrigin
 public class TeacherController {
     @Autowired
     final TeacherService teacherService;
@@ -41,4 +42,5 @@ public class TeacherController {
     public void updateTeacher(@RequestBody Teacher teacher){
         teacherService.updateTeacherById(teacher);
     }
+
 }
