@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-teacher-page',
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class RegisterTeacherPageComponent {
 
   public teacher:any={
+    // teacherId:"",
     teacherName:"",
     schoolName:"",
     subject:"",
@@ -23,11 +24,11 @@ export class RegisterTeacherPageComponent {
     password:""
   };
 
-  //constructer(){}
-
-  public addTeacher(){
+  async addTeacher(){
     this.http.post("http://localhost:8080/teacher/add-teacher", this.teacher).subscribe((data)=>{
       alert("You Registered Successfully!!!");
+
+    this.router.navigate(['create-time-table-page']);
     })
   }
 
@@ -36,8 +37,5 @@ export class RegisterTeacherPageComponent {
     private http:HttpClient
   ){}
 
-  async navigateToCreateTimeTablePage() {
-    this.addTeacher();
-    this.router.navigate(['create-time-table-page']);
-  }
+    
 }

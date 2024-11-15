@@ -17,18 +17,17 @@
                 <h2>Register with Teach Time</h2>
                 <p>Create to your account</p>
                 <form>
-                    <input type="text" id="regiName" placeholder="Name" required [(ngModel)]="teacher.Name">
-                    <input type="text" id="regiSclName" placeholder="School Name" required [(ngModel)]="teacher.schoolName">
-                    <input type="text" id="regiSubject" placeholder="Subject" required [(ngModel)]="teacher.subject">
-                    <input type="text" id="regiContactNo" placeholder="Contact Number" required [(ngModel)]="teacher.email">
-                    <input type="email" id="email" placeholder="Email" required [(ngModel)]="teacher.contactNumber">
-                    <input type="text" id="regiUserName" placeholder="User Name" required [(ngModel)]="teacher.userName">
-                    <input type="password" id="password" placeholder="Password" required [(ngModel)]="teacher.password">
+                    <input type="text" id="regiName" placeholder="Name" required [(ngModel)]="teacher.Name" name="regiName">
+                    <input type="text" id="regiSclName" placeholder="School Name" required [(ngModel)]="teacher.schoolName" name="regiSclName">
+                    <input type="text" id="regiSubject" placeholder="Subject" required [(ngModel)]="teacher.subject" name="regiSubject">
+                    <input type="text" id="regiContactNo" placeholder="Contact Number" required [(ngModel)]="teacher.email" name="regiContactNo">
+                    <input type="email" id="email" placeholder="Email" required [(ngModel)]="teacher.contactNumber" name="email">
+                    <input type="text" id="regiUserName" placeholder="User Name" required [(ngModel)]="teacher.userName" name="regiUserName">
+                    <input type="password" id="password" placeholder="Password" required [(ngModel)]="teacher.password" name="password">
                     <div class="options">
                         <label><input type="checkbox"> I confirm that the above information is true.</label>
                     </div>
-                    <button type="submit" class="register-btn" (click)="navigateToCreateTimeTablePage()">Sign Up</button>
-                </form>
+                    <button type="button" class="register-btn" (click)="addTeacher()">Sign Up</button></form>
                 <p class="log-in">Already have an account? <a href="#">Log in here</a></p>
             </div>
         </div>
