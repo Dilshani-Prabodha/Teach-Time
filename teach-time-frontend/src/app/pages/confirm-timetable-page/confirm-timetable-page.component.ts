@@ -17,4 +17,8 @@ export class ConfirmTimetablePageComponent {
   navigateToCreateTimTblPage() {
     this.router.navigate(['create-time-table-page']);
   }
+
+  navigateToHomePage() {
+    this.router.navigate(['home-page']);
+  }
 }

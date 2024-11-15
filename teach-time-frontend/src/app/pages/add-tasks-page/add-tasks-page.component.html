@@ -1,0 +1,31 @@
+<app-nav-bar></app-nav-bar>
+<div class="blue-background">
+    <h1>ADD Tasks</h1>
+    <div class="add-task-container">
+        
+    
+        <div class="task-input-section">
+            <label for="taskDate">Date:</label>
+            <input type="date" id="taskDate" class="date-input" />
+            
+            <label for="taskGrade">Grade:</label>
+            <input type="text" id="taskGrade" class="grade-input" placeholder="e.g., 8 - G" />
+        </div>
+    
+        <!-- <div class="tasks-list">
+            <div *ngFor="let task of tasks" class="task-item">
+                <input type="checkbox" />
+                <span class="task-text">{{ task.text }}</span>
+                <button class="task-button reassign">Reassign</button>
+                <button class="task-button edit">Edit</button>
+                <button class="task-button delete">Delete</button>
+            </div>
+        </div> [(ngModel)]="newTask" (click)="addTask()"-->
+    </div>
+    <div class="add-task-input-section">
+        <div class="enter-tasks">
+            <input type="text" placeholder="Enter task..." class="task-input" />
+            <button  class="add-task-button">Add Task</button>
+        </div>
+    </div>
+</div>

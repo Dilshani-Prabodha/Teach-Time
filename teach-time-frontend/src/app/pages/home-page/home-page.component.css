@@ -1,0 +1,49 @@
+    /* Style for the button */
+    .custom-button {
+        width: 200px;
+        height: 250px;
+        border: 3px solid gold;
+        border-radius: 20px;
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+  
+      /* Hover effect */
+      .custom-button:hover {
+        background-color: rgba(255, 215, 0, 0.2); /* Light gold highlight on hover */
+        color: #fff; /* Change text color */
+      }
+
+      .welcome-heading{
+        position: relative;
+        top: -150px;
+      }
+
+      #btnAssignTasks{
+        position: absolute;
+        top: 40%;
+        left: 5%;
+      }
+
+      #btnViewAssignedTasks{
+        position: absolute;
+        top: 40%;
+        left: 30%;
+      }
+
+      #btnReassignIncompletedTasks{
+        position: absolute;
+        top: 40%;
+        left: 55%;
+      }
+
+      #btnSearchCompletedTasks{
+        position: absolute;
+        top: 40%;
+        left: 80%;
+      }

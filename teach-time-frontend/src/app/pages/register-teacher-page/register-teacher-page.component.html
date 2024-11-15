@@ -17,13 +17,13 @@
                 <h2>Register with Teach Time</h2>
                 <p>Create to your account</p>
                 <form>
-                    <input type="text" id="regiName" placeholder="Name" required>
-                    <input type="text" id="regiSclName" placeholder="School Name" required>
-                    <input type="text" id="regiSubject" placeholder="Subject" required>
-                    <input type="text" id="regiContactNo" placeholder="Contact Number" required>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="text" id="regiUserName" placeholder="User Name" required>
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="text" id="regiName" placeholder="Name" required [(ngModel)]="teacher.Name">
+                    <input type="text" id="regiSclName" placeholder="School Name" required [(ngModel)]="teacher.schoolName">
+                    <input type="text" id="regiSubject" placeholder="Subject" required [(ngModel)]="teacher.subject">
+                    <input type="text" id="regiContactNo" placeholder="Contact Number" required [(ngModel)]="teacher.email">
+                    <input type="email" id="email" placeholder="Email" required [(ngModel)]="teacher.contactNumber">
+                    <input type="text" id="regiUserName" placeholder="User Name" required [(ngModel)]="teacher.userName">
+                    <input type="password" id="password" placeholder="Password" required [(ngModel)]="teacher.password">
                     <div class="options">
                         <label><input type="checkbox"> I confirm that the above information is true.</label>
                     </div>
