@@ -9,9 +9,30 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [FormsModule,CommonModule,HttpClientModule],
   templateUrl: './register-teacher-page.component.html',
-  styleUrl: './register-teacher-page.component.css'
+  styleUrls: ['./register-teacher-page.component.css']
 })
+
+// interface Teacher {
+//   teacherName: string;
+//   schoolName: string;
+//   subject: string;
+//   email: string;
+//   contactNumber: string;
+//   userName: string;
+//   password: string;
+// }
+
 export class RegisterTeacherPageComponent {
+
+//   public teacher: Teacher = {
+//     teacherName: "",
+//     schoolName: "",
+//     subject: "",
+//     email: "",
+//     contactNumber: "",
+//     userName: "",
+//     password:""
+// };
 
   public teacher:any={
     // teacherId:"",
@@ -35,7 +56,5 @@ export class RegisterTeacherPageComponent {
   constructor(
     private router: Router,
     private http:HttpClient
-  ){}
-
-    
+  ){}    
 }
