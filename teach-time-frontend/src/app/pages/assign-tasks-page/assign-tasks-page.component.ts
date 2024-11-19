@@ -17,14 +17,41 @@ export class AssignTasksPageComponent {
   constructor(
     private router: Router,
     private http: HttpClient
-  ){this.loardTimeTable();}
+  ){this.loadTimeTable();}
 
-  loardTimeTable(){
-    this.http.get("http://localhost:8080/time-table/get-all-grades").subscribe(data=>{
-      console.log(data);
-      this.gradeList = data;
-    })
+  // loardTimeTable(){
+  //   this.http.get("http://localhost:8080/time-table/get-all-grades").subscribe(data=>{
+  //     console.log(data);
+  //     this.gradeList = data;
+  //   })
+  // }
+
+  loadTimeTable() {
+    // Get the logged-in teacher's ID from localStorage
+    const loggedInTeacher = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    const teacherId = loggedInTeacher.teacherId;
+
+    if (!teacherId) {
+      console.error('Teacher ID not found in local storage.');
+      return;
+    }
+
+    // Fetch grades from backend
+    this.http.get('http://localhost:8080/time-table/get-all-grades').subscribe(
+      (data: any) => {
+        console.log('Fetched Grades:', data);
+        
+        // Filter grades belonging to the logged-in teacher
+        this.gradeList = data.filter((grade: any) => grade.teacherId === teacherId);
+      },
+      (error) => {
+        console.error('Error fetching grade list:', error);
+      }
+    );
   }
+
+
+
 
   navigateAddTaskPage() {
     this.router.navigate(['add-tasks-page']);
