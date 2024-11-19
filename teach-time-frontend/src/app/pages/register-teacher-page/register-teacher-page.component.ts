@@ -46,6 +46,23 @@ export class RegisterTeacherPageComponent {
   };
 
   async addTeacher(){
+
+      // Check if any field is empty
+      if (
+        !this.teacher.teacherName.trim() ||
+        !this.teacher.schoolName.trim() ||
+        !this.teacher.subject.trim() ||
+        !this.teacher.email.trim() ||
+        !this.teacher.contactNumber.trim() ||
+        !this.teacher.userName.trim() ||
+        !this.teacher.password.trim()
+      ) {
+        alert("All fields are required. Please fill in all the details.");
+        return; // Prevent the submission if any field is empty
+      }
+
+
+
     this.http.post("http://localhost:8080/teacher/add-teacher", this.teacher).subscribe((data)=>{
       alert("You Registered Successfully!!!");
 

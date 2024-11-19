@@ -25,7 +25,6 @@ public class TeacherController {
     public void addTeacher(@RequestBody Teacher teacher){
         teacherService.addTeacher(teacher);
     }
-
     @GetMapping("/search-by-teacherid/{teacherId}")
     public Teacher getTeacherById(@PathVariable Integer teacherId){
         return teacherService.searchTeacherById(teacherId);
@@ -42,5 +41,4 @@ public class TeacherController {
     public void updateTeacher(@RequestBody Teacher teacher){
         teacherService.updateTeacherById(teacher);
     }
-
 }

@@ -46,7 +46,10 @@ export class LogInPageComponent {
 
     if (foundTeacher) {
       alert('Login successfully!');
-      this.router.navigate(['create-time-table-page']);
+      // Store logged-in user details in local storage
+      localStorage.setItem('loggedInUser', JSON.stringify(foundTeacher));
+
+      this.router.navigate(['home-page']);
     } else {
       alert('Invalid username or password.');
     }
