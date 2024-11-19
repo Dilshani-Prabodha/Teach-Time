@@ -1,4 +1,4 @@
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,43 +12,67 @@ import { Router } from '@angular/router';
 export class CreateTimetablePageComponent {
 
   constructor(
-    private router: Router
-    // private http: HttpClient
+    private router: Router,
+    private http: HttpClient
     ){}
 
-//     loggedInTeacherId: number = 1;
-// // Method to handle the "Submit" button click
-// submitTimetable() {
-//   // Query all input fields in the table
-//   const inputs = document.querySelectorAll('table tbody tr td input');
-//   const timetableEntries: any[] = [];
+
+  // Variable to hold the logged-in teacher's ID
+  loggedInTeacherId: number | null = null;
+
+  ngOnInit() {
+    // Retrieve the logged-in teacher's information from localStorage
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+
+    // If a logged-in user is found, set the loggedInTeacherId
+    if (loggedInUser && loggedInUser.teacherId) {
+      this.loggedInTeacherId = loggedInUser.teacherId;
+    } else {
+      // Handle case when no logged-in user is found (optional, e.g., redirect to login)
+      alert('Please log in to submit the timetable.');
+      this.router.navigate(['log-in-page']);
+    }
+  }
+
+
+// Method to handle the "Submit" button click
+submitTimetable() {
   
-//   // Map the inputs into JSON objects with teacherId, day, and period
-//   inputs.forEach((input, index) => {
-//     const value = (input as HTMLInputElement).value.trim();
-//     if (value) {
-//       const rowIndex = Math.floor(index / 8); // Calculate the row (day)
-//       const colIndex = (index % 8) + 1; // Calculate the period
-//       timetableEntries.push({
-//         teacherId: this.loggedInTeacherId,
-//         day: rowIndex + 1, // Days: Monday=1, Tuesday=2, etc.
-//         period: colIndex,
-//         grade: value
-//       });
-//     }
-//   });
+  const inputs = document.querySelectorAll('table tbody tr td input');
+  const timetableEntries: any[] = [];
+  
+  inputs.forEach((input, index) => {
+    const value = (input as HTMLInputElement).value.trim();
+    if (value) {
+      const rowIndex = Math.floor(index / 8); // Calculate the row (day)
+      const colIndex = (index % 8) + 1; // Calculate the period
+      timetableEntries.push({
+        teacherId: this.loggedInTeacherId,
+        day: rowIndex + 1, // Days: Monday=1, Tuesday=2, 
+        period: colIndex,
+        grade: value
+      });
+    }
+  });
 
-//   // Send POST request for each JSON object
-//   timetableEntries.forEach(entry => {
-//     this.http.post('http://localhost:8080/api/timetable', entry).subscribe({
-//       next: response => console.log('Entry added successfully:', response),
-//       error: err => console.error('Error adding entry:', err)
-//     });
-//   });
-// }
+  // Send POST request for each JSON object
+  timetableEntries.forEach(entry => {
+    this.http.post('http://localhost:8080/time-table/add-grade', entry).subscribe({
+      next: response => console.log('Entry added successfully:', response),
+      error: err => console.error('Error adding entry:', err)
+    });
+  });
 
+  if (timetableEntries.length > 0) {
+        
+        alert('Timetable submitted successfully!');
+        this.navigateToConfirmTimTblPage();
+  } else {
+    alert('No entries to submit. Please fill in the timetable.');
+  }
+}
 
   navigateToConfirmTimTblPage(){
-    this.router.navigate(['confirm-time-table-page'])
+    this.router.navigate(['confirm-time-table-page']);
   }
 }

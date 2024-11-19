@@ -12,27 +12,8 @@ import { Router, RouterLink } from '@angular/router';
   styleUrls: ['./register-teacher-page.component.css']
 })
 
-// interface Teacher {
-//   teacherName: string;
-//   schoolName: string;
-//   subject: string;
-//   email: string;
-//   contactNumber: string;
-//   userName: string;
-//   password: string;
-// }
 
 export class RegisterTeacherPageComponent {
-
-//   public teacher: Teacher = {
-//     teacherName: "",
-//     schoolName: "",
-//     subject: "",
-//     email: "",
-//     contactNumber: "",
-//     userName: "",
-//     password:""
-// };
 
   public teacher:any={
     // teacherId:"",
@@ -58,16 +39,28 @@ export class RegisterTeacherPageComponent {
         !this.teacher.password.trim()
       ) {
         alert("All fields are required. Please fill in all the details.");
-        return; // Prevent the submission if any field is empty
+        return; 
       }
 
+          // Send teacher data to the backend
+    this.http.post('http://localhost:8080/teacher/add-teacher', this.teacher).subscribe({
+      next: (data: any) => {
+        alert('You Registered Successfully!!!');
+        // Store the registered teacher's details in local storage
+        localStorage.setItem('loggedInUser', JSON.stringify(data));
+        this.router.navigate(['create-time-table-page']);
+      },
+      error: (err) => {
+        console.error('Error registering teacher:', err);
+        alert('Registration failed. Please try again.');
+      },
+    });
 
+  //   this.http.post("http://localhost:8080/teacher/add-teacher", this.teacher).subscribe((data)=>{
+  //     alert("You Registered Successfully!!!");
 
-    this.http.post("http://localhost:8080/teacher/add-teacher", this.teacher).subscribe((data)=>{
-      alert("You Registered Successfully!!!");
-
-    this.router.navigate(['create-time-table-page']);
-    })
+  //   this.router.navigate(['create-time-table-page']);
+  //   })
   }
 
   constructor(
