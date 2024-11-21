@@ -41,7 +41,7 @@ export class AddTasksPageComponent implements OnInit {
         this.date = this.formatDate(this.date);  // Format to "yyyy-MM-dd"
       }
 
-      this.loadTasks();  // Load tasks based on the selected date, period, and grade
+      // this.loadTasks();  // Load tasks based on the selected date, period, and grade
     });
   }
 
@@ -78,11 +78,26 @@ export class AddTasksPageComponent implements OnInit {
   }
 
   addTask() {
-    if (this.newTask.trim()) {
-      this.tasks.unshift(this.newTask); // Add the new task to the top of the list
-      this.newTask = ''; // Clear the input field
+    // Trim the input and check if it's not empty
+    const trimmedTask = this.newTask.trim();
+  
+    // Only proceed if the task is not an empty string
+    if (trimmedTask !== '') {
+      // Add the trimmed task to the beginning of the tasks list
+      this.tasks.unshift(trimmedTask); // Adds the new task to the top of the list
+  
+      // Save the task to the backend
+      this.saveTask();
+  
+      // Clear the input field after saving the task
+      this.newTask = '';
+    } else {
+      // Optionally, show an alert if the input is invalid
+      alert('Please enter a valid task!');
     }
   }
+  
+  
 
   editTask(index: number) {
     const updatedTask = prompt('Edit the task:', this.tasks[index]);
@@ -112,27 +127,29 @@ export class AddTasksPageComponent implements OnInit {
 
   saveTask() {
     const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2; // Replace '2' with dynamic teacherId
-
+  
     const taskData = {
-      date: this.date,
       period: this.period,
+      date: this.date,
       grade: this.grade,
-      taskName: this.newTask,
+      task: this.newTask,
+      check: false,
       teacherId: teacherId
     };
-
+  
     this.http.post('http://localhost:8080/add-tasks/add', taskData).subscribe({
       next: (response) => {
         console.log('Task added successfully:', response);
-        this.tasks.push(this.newTask); // Add the new task to the list
-        this.newTask = ''; // Reset the input
+        alert("Task added successfully!");
+        this.tasks.push(this.newTask);  // Add the new task to the list
+        this.newTask = '';             // Reset the input field
       },
       error: (error) => {
         console.error('Error adding task:', error);
       }
     });
   }
-
+  
 
 
   removeOldTasks() {

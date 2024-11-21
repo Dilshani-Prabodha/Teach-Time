@@ -192,3 +192,21 @@ h1 {
     padding: 5px; /* Optional: add some padding */
     border-radius: 4px; /* Optional: rounded corners */
 }
+
+.finish-add-task-button {
+    width: 250px;         /* Set width */
+    height: 35px;        /* Set height */
+    background-color: rgb(88, 182, 88); /* Set background color */
+    color: white;        /* Set text color */
+    border-color: #000000;        /* Remove default border */
+    border-radius: 4px;  /* Optional: rounded corners */
+    font-size: 20px;     /* Adjust font size to fit */
+    position: absolute;  /* Make position absolute */
+    top: 150%;              /* Adjust positioning relative to the nearest positioned ancestor */
+    left: 40%;             /* Adjust positioning relative to the nearest positioned ancestor */
+    cursor: pointer;     /* Change cursor on hover */
+}
+
+.finish-add-task-button:hover {
+    background-color: rgb(24, 151, 24); /* Change color on hover */
+}
