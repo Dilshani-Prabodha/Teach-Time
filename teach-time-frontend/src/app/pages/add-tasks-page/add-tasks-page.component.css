@@ -111,9 +111,84 @@ h1 {
 
 .enter-tasks{
     position: absolute;
-    bottom: 5%;
-    left: 25%;
+    top: 110%;
+    left: 15%;
 }
 .enter-tasks input{
     width: 600px;
+}
+
+/* ================================= */
+.tasks-list {
+    margin-top: 20px;
+  }
+  
+  .task-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .task-checkbox {
+    margin-right: 10px;
+  }
+  
+  .task-text {
+    flex: 1;
+  }
+  
+  .task-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .task-button.edit {
+    background-color: #ffc107;
+  }
+  
+  .task-button.reassign {
+    background-color: #17a2b8;
+  }
+  
+  .task-button.delete {
+    background-color: #dc3545;
+  }
+  
+  .task-button:hover {
+    opacity: 0.8;
+  }
+  #taskDate{
+    background-color: #000000; /* Light blue background */
+    color: #ffffff; /* Navy blue text */
+    border: 1px solid #000080; /* Optional: navy blue border */
+    padding: 5px; /* Optional: add some padding */
+    border-radius: 4px; /* Optional: rounded corners */
+  }
+#taskGrade{
+    background-color: #000000; /* Light blue background */
+    color: #ffffff; /* Navy blue text */
+    border: 1px solid #000080; /* Optional: navy blue border */
+    padding: 5px; /* Optional: add some padding */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+#taskPeriod{
+    background-color: #000000; /* Light blue background */
+    color: #ffffff; /* Navy blue text */
+    border: 1px solid #000080; /* Optional: navy blue border */
+    padding: 5px; /* Optional: add some padding */
+    border-radius: 4px; /* Optional: rounded corners */
+}
+.task-input{
+    background-color: #cdcdce; /* Light blue background */
+    color: #ffffff; /* Navy blue text */
+    border: 1px solid #000080; /* Optional: navy blue border */
+    padding: 5px; /* Optional: add some padding */
+    border-radius: 4px; /* Optional: rounded corners */
 }

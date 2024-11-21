@@ -3,11 +3,12 @@ import { NavBarComponent } from "../../common/nav-bar/nav-bar.component";
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-tasks-page',
   standalone: true,
-  imports: [NavBarComponent, FormsModule, HttpClientModule],
+  imports: [NavBarComponent, FormsModule, HttpClientModule,CommonModule],
   templateUrl: './add-tasks-page.component.html',
   styleUrls: ['./add-tasks-page.component.css'] 
 })
@@ -78,9 +79,36 @@ export class AddTasksPageComponent implements OnInit {
 
   addTask() {
     if (this.newTask.trim()) {
-      this.saveTask();
+      this.tasks.unshift(this.newTask); // Add the new task to the top of the list
+      this.newTask = ''; // Clear the input field
     }
   }
+
+  editTask(index: number) {
+    const updatedTask = prompt('Edit the task:', this.tasks[index]);
+    if (updatedTask !== null && updatedTask.trim()) {
+      this.tasks[index] = updatedTask;
+    }
+  }
+
+  reassignTask(index: number) {
+    const newDate = prompt('Enter new date for reassigning the task:');
+    if (newDate && this.isValidDate(newDate)) {
+      alert(`Task "${this.tasks[index]}" reassigned to ${newDate}`);
+      // Add logic for reassigning (e.g., API call)
+    } else {
+      alert('Invalid date format.');
+    }
+  }
+
+  deleteTask(index: number) {
+    const confirmation = confirm(`Are you sure you want to delete the task "${this.tasks[index]}"?`);
+    if (confirmation) {
+      this.tasks.splice(index, 1);
+    }
+  }
+
+
 
   saveTask() {
     const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2; // Replace '2' with dynamic teacherId
@@ -104,6 +132,8 @@ export class AddTasksPageComponent implements OnInit {
       }
     });
   }
+
+
 
   removeOldTasks() {
     this.tasks = [];

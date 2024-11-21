@@ -15,20 +15,27 @@
             <input type="text" id="taskPeriod" class="period-input" [value]="period" readonly/>
         </div>
     
-        <!-- <div class="tasks-list">
-            <div *ngFor="let task of tasks" class="task-item">
-                <input type="checkbox" />
-                <span class="task-text">{{ task.text }}</span>
-                <button class="task-button reassign">Reassign</button>
-                <button class="task-button edit">Edit</button>
-                <button class="task-button delete">Delete</button>
+        
+        <div class="add-task-input-section">
+            <div class="enter-tasks">
+              <input
+                type="text"
+                placeholder="Enter task..."
+                class="task-input"
+                [(ngModel)]="newTask"
+              />
+              <button class="add-task-button" (click)="addTask()">Add Task</button>
             </div>
-        </div> [(ngModel)]="newTask" (click)="addTask()"-->
-    </div>
-    <div class="add-task-input-section">
-        <div class="enter-tasks">
-            <input type="text" placeholder="Enter task..." class="task-input" [(ngModel)]="newTask" />
-            <button  class="add-task-button" (click)="addTask()">Add Task</button>
-        </div>
-    </div>
+          </div>
+        
+          <!-- Task Display Section -->
+          <div class="tasks-list">
+            <div *ngFor="let task of tasks; let i = index" class="task-item">
+              <input type="checkbox" class="task-checkbox" />
+              <span class="task-text">{{ task }}</span>
+              <button class="task-button edit" (click)="editTask(i)">Edit</button>
+              <button class="task-button reassign" (click)="reassignTask(i)">Reassign</button>
+              <button class="task-button delete" (click)="deleteTask(i)">Delete</button>
+            </div>
+          </div>
 </div>
