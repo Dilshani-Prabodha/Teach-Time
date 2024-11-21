@@ -3,7 +3,7 @@
     <h1 class="confirm-heading">Assign Your Tasks</h1>
     <div class="selecte-date">
         <label for="date-picker">Select Date:</label>
-        <input type="date" id="date-picker">
+        <input type="date" id="date-picker" [(ngModel)]="selectedDate">
     </div>
     <div class="main-confirm-table"> 
         <div class="table-container">
@@ -24,145 +24,145 @@
                     <tr>
                         <td>1</td>
                         <td class="period-data">{{ gradeList[0]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[0].date, 1, gradeList[0].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[8]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[8].date, 1, gradeList[8].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[16]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[16].date, 1, gradeList[16].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[24]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[24].date, 1, gradeList[24].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[32]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[32].date, 1, gradeList[32].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td class="period-data">{{ gradeList[1]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[1].date, 2, gradeList[1].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[9]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[9].date, 2, gradeList[9].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[17]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[17].date, 2, gradeList[17].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[25]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[25].date, 2, gradeList[25].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[33]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[33].date, 2, gradeList[33].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td class="period-data">{{ gradeList[2]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[2].date, 3, gradeList[2].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[10]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[10].date, 3, gradeList[10].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[18]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[18].date, 3, gradeList[18].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[26]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[26].date, 3, gradeList[26].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[34]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[34].date, 3, gradeList[34].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td class="period-data">{{ gradeList[3]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[3].date, 4, gradeList[3].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[11]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[11].date, 4, gradeList[11].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[19]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[19].date, 4, gradeList[19].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[27]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[27].date, 4, gradeList[27].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[35]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[35].date, 4, gradeList[35].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td class="period-data">{{ gradeList[4]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[4].date, 5, gradeList[4].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[12]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[12].date, 5, gradeList[12].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[20]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[20].date, 5, gradeList[20].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[28]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[28].date, 5, gradeList[28].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[36]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[36].date, 5, gradeList[36].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td class="period-data">{{ gradeList[5]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[5].date, 6, gradeList[5].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[13]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[13].date, 6, gradeList[13].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[21]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[27].date, 6, gradeList[27].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[29]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[29].date, 6, gradeList[29].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[37]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[37].date, 6, gradeList[37].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td class="period-data">{{ gradeList[6]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[6].date, 7, gradeList[6].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[14]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[14].date, 7, gradeList[14].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[22]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[22].date, 7, gradeList[22].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[30]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[30].date, 7, gradeList[30].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[38]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[38].date, 7, gradeList[38].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>8</td>
                         <td class="period-data">{{ gradeList[7]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[7].date, 8, gradeList[7].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[15]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[15].date, 8, gradeList[15].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[23]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[23].date, 8, gradeList[23].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[31]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[31].date, 8, gradeList[31].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                         <td class="period-data">{{ gradeList[39]?.grade || '(No Data)' }}
-                            <button (click)="navigateAddTaskPage()"><i class="bi bi-plus-circle"></i></button>
+                            <button (click)="navigateAddTaskPage(gradeList[39].date, 8, gradeList[39].grade)"><i class="bi bi-plus-circle"></i></button>
                         </td>
                     </tr>
                 </tbody>

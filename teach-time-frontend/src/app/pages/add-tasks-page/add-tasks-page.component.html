@@ -6,10 +6,13 @@
     
         <div class="task-input-section">
             <label for="taskDate">Date:</label>
-            <input type="date" id="taskDate" class="date-input" />
+            <input type="date" id="taskDate" class="date-input" [value]="date" readonly/>
             
             <label for="taskGrade">Grade:</label>
-            <input type="text" id="taskGrade" class="grade-input" placeholder="e.g., 8 - G" />
+            <input type="text" id="taskGrade" class="grade-input" [value]="grade" readonly/>
+
+            <label for="taskGrade">Period:</label>
+            <input type="text" id="taskPeriod" class="period-input" [value]="period" readonly/>
         </div>
     
         <!-- <div class="tasks-list">
@@ -24,8 +27,8 @@
     </div>
     <div class="add-task-input-section">
         <div class="enter-tasks">
-            <input type="text" placeholder="Enter task..." class="task-input" />
-            <button  class="add-task-button">Add Task</button>
+            <input type="text" placeholder="Enter task..." class="task-input" [(ngModel)]="newTask" />
+            <button  class="add-task-button" (click)="addTask()">Add Task</button>
         </div>
     </div>
 </div>
