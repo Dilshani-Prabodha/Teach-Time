@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from "../../common/nav-bar/nav-bar.component";
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -8,19 +8,20 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-add-tasks-page',
   standalone: true,
-  imports: [NavBarComponent, FormsModule, HttpClientModule,CommonModule],
+  imports: [NavBarComponent, FormsModule, HttpClientModule, CommonModule],
   templateUrl: './add-tasks-page.component.html',
-  styleUrls: ['./add-tasks-page.component.css'] 
+  styleUrls: ['./add-tasks-page.component.css']
 })
 export class AddTasksPageComponent implements OnInit {
 
   public date: string = '';
   period: number = 0;
   grade: string = '';
-  tasks: string[] = []; 
-  newTask: string = ''; 
+  tasks: any[] = [];
+  uncheckedTasks: any[] = [];
+  newTask: string = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -41,8 +42,9 @@ export class AddTasksPageComponent implements OnInit {
         this.date = this.formatDate(this.date);  // Format to "yyyy-MM-dd"
       }
 
-      console.log('Loaded Params:', { date: this.date, period: this.period, grade: this.grade });
-      this.loadTasks();  // Load tasks based on the selected date, period, and grade
+      console.log('Loaded Params:', { date: this.date, period: this.period, grade: this.grade }); // Load tasks based on the selected date, period, and grade
+
+      this.loadTasks();  // Load tasks for the specified date, period, and grade
     });
   }
 
@@ -66,7 +68,7 @@ export class AddTasksPageComponent implements OnInit {
 
   loadTasks() {
     const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2;
-  
+
     this.http.get(`http://localhost:8080/add-tasks/filter`, {
       params: {
         teacherId: teacherId.toString(),
@@ -77,87 +79,113 @@ export class AddTasksPageComponent implements OnInit {
     }).subscribe({
       next: (response: any) => {
         console.log('Fetched tasks:', response);
-        this.tasks = response.map((task: any) => task.taskName || task.name || task.task);
+        
+        this.tasks = response;
+        this.filterUncheckedTasks();  // Filter unchecked tasks after loading tasks
+        console.log(this.tasks);
       },
       error: (error) => {
         console.error('Error fetching tasks:', error);
         this.tasks = []; // Reset tasks if an error occurs
       }
     });
+    
   }
-  
+
   addTask() {
-    // Trim the input and check if it's not empty
     const trimmedTask = this.newTask.trim();
-  
-    // Only proceed if the task is not an empty string
+
     if (trimmedTask !== '') {
-      // Add the trimmed task to the beginning of the tasks list
-      this.tasks.unshift(trimmedTask); // Adds the new task to the top of the list
-  
+      const taskData = {
+        teacherId: JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2,
+        date: this.date,
+        period: this.period,
+        grade: this.grade,
+        task: this.newTask,
+        check: false
+      };
+
       // Save the task to the backend
-      this.saveTask();
-  
-      // Clear the input field after saving the task
-      this.newTask = '';
+      this.http.post('http://localhost:8080/add-tasks/add', taskData).subscribe({
+        next: (response) => {
+          console.log('Task added successfully:', response);
+          this.newTask = ''; // Reset the input field
+          this.loadTasks(); // Refresh the tasks list after adding the task
+        },
+        error: (error) => {
+          console.error('Error adding task:', error);
+        }
+      });
     } else {
-      // Optionally, show an alert if the input is invalid
       alert('Please enter a valid task!');
     }
   }
-  
-  
 
-  editTask(index: number) {
-    const updatedTask = prompt('Edit the task:', this.tasks[index]);
-    if (updatedTask !== null && updatedTask.trim()) {
-      this.tasks[index] = updatedTask;
+  editTask(task: any) {
+    const updatedTask = prompt('Edit the task name');
+    if (updatedTask) {
+      task.task = updatedTask;
+      console.log('Updated Task:', task);  // Log the task before sending it
+  
+      this.http.put("http://localhost:8080/add-tasks/update", task).subscribe(
+        (response) => {
+          console.log('Task updated successfully:', response);
+          this.loadTasks();  // Reload tasks after editing
+        },
+        (error) => {
+          console.error('Error updating task:', error);
+        }
+      );
     }
   }
-
-  reassignTask(index: number) {
+  
+  
+  reassignTask(task: any) {
     const newDate = prompt('Enter new date for reassigning the task:');
-    if (newDate && this.isValidDate(newDate)) {
-      alert(`Task "${this.tasks[index]}" reassigned to ${newDate}`);
-      // Add logic for reassigning (e.g., API call)
+    if (newDate) {
+      task.date = newDate;
+      this.http.put("http://localhost:8080/add-tasks/update", task).subscribe(
+        (response) => {
+          console.log('Task date reassigned successfully:', response);
+          alert(`Task date reassigned to ${newDate}`);
+          this.loadTasks(); // Reload tasks after reassigning
+        },
+        (error) => {
+          console.error('Error reassigning task:', error);
+        }
+      );
     } else {
       alert('Invalid date format.');
     }
   }
 
-  deleteTask(index: number) {
-    const confirmation = confirm(`Are you sure you want to delete the task "${this.tasks[index]}"?`);
+  deleteTask(task: any) {
+    const confirmation = confirm(`Are you sure you want to delete the task "${task.task}"?`);
     if (confirmation) {
-      this.tasks.splice(index, 1);
+      this.http.delete(`http://localhost:8080/add-tasks/delete/${task.taskId}`).subscribe({
+        next: () => {
+          alert('Task deleted successfully.');
+          this.loadTasks(); // Reload tasks after deleting
+        },
+        error: (error) => {
+          console.error('Error deleting task:', error);
+          alert('Failed to delete the task. Please try again later.');
+        }
+      });
     }
   }
 
-  saveTask() {
-    const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2;
-  
-    const taskData = {
-      teacherId: teacherId,
-      date: this.date,
-      period: this.period,
-      grade: this.grade,
-      task: this.newTask,
-      check: false
-    };
-  
-    this.http.post('http://localhost:8080/add-tasks/add', taskData).subscribe({
-      next: (response) => {
-        console.log('Task added successfully:', response);
-        this.tasks.unshift(this.newTask); // Add the new task to the list
-        this.newTask = ''; // Reset the input field
-        this.loadTasks(); // Refresh the tasks list
-      },
-      error: (error) => {
-        console.error('Error adding task:', error);
-      }
-    });
+  filterUncheckedTasks(): void {
+    this.uncheckedTasks = this.tasks.filter((task: { check: boolean }) => task.check === false);
+    console.log('Unchecked Tasks:', this.uncheckedTasks);
   }
-  
-  removeOldTasks() {
-    this.tasks = [];
+
+  completeTask(event: Event, task: any): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    task.check = isChecked;
+    this.http.put("http://localhost:8080/add-tasks/update", task).subscribe(
+      (response) => {
+        console.log('Profile updated successfully:', response);
+      })
   }
 }

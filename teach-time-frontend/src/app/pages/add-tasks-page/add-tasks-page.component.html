@@ -32,14 +32,13 @@
           </div>
 
           <!-- Task Display Section -->
-          <div class="tasks-list">
-            <div *ngFor="let task of tasks; let i = index" class="task-item">
-              <input type="checkbox" class="task-checkbox" />
-              <span class="task-text">{{ task }}</span>
-              <button class="task-button edit" (click)="editTask(i)">Edit</button>
-              <button class="task-button reassign" (click)="reassignTask(i)">Reassign</button>
-              <button class="task-button delete" (click)="deleteTask(i)">Delete</button>
-            </div>
-          </div>
-          
+<div class="tasks-list">
+  <div *ngFor="let task of uncheckedTasks; let i = index" class="task-item">
+    <input type="checkbox" class="task-checkbox" (click)="completeTask($event,task)"/>
+    <span class="task-text">{{ task.task }}</span>
+    <button class="task-button edit" (click)="editTask(task)">Edit</button>
+    <button class="task-button reassign" (click)="reassignTask(task)">Reassign</button>
+    <button class="task-button delete" (click)="deleteTask(task)">Delete</button>
+  </div>
+</div>
 </div>

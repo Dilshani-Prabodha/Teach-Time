@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class AddTaskServiceImpl implements AddTaskService {
 
     @Autowired
-    private AddTaskRepository addTaskRepository;
+    private final AddTaskRepository addTaskRepository;
     private final AddTaskRepository taskRepository;
     private final TeacherRepository teacherRepository;
     private final ModelMapper modelMapper;
