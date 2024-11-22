@@ -41,7 +41,8 @@ export class AddTasksPageComponent implements OnInit {
         this.date = this.formatDate(this.date);  // Format to "yyyy-MM-dd"
       }
 
-      // this.loadTasks();  // Load tasks based on the selected date, period, and grade
+      console.log('Loaded Params:', { date: this.date, period: this.period, grade: this.grade });
+      this.loadTasks();  // Load tasks based on the selected date, period, and grade
     });
   }
 
@@ -64,19 +65,27 @@ export class AddTasksPageComponent implements OnInit {
   }
 
   loadTasks() {
-    const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2; // Replace '2' with dynamic teacherId
-    this.http.get(`http://localhost:8080/add-tasks/get-teacher-task/${teacherId}`)
-      .subscribe({
-        next: (response: any) => {
-          console.log(response); // Log API response
-          this.tasks = response.map((task: any) => task.taskName || task.name || "Unnamed Task");
-        },
-        error: (error) => {
-          console.error('Error fetching tasks:', error);
-        }
-      });
+    const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2;
+  
+    this.http.get(`http://localhost:8080/add-tasks/filter`, {
+      params: {
+        teacherId: teacherId.toString(),
+        date: this.date,
+        period: this.period.toString(),
+        grade: this.grade
+      }
+    }).subscribe({
+      next: (response: any) => {
+        console.log('Fetched tasks:', response);
+        this.tasks = response.map((task: any) => task.taskName || task.name || task.task);
+      },
+      error: (error) => {
+        console.error('Error fetching tasks:', error);
+        this.tasks = []; // Reset tasks if an error occurs
+      }
+    });
   }
-
+  
   addTask() {
     // Trim the input and check if it's not empty
     const trimmedTask = this.newTask.trim();
@@ -123,26 +132,24 @@ export class AddTasksPageComponent implements OnInit {
     }
   }
 
-
-
   saveTask() {
-    const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2; // Replace '2' with dynamic teacherId
+    const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2;
   
     const taskData = {
-      period: this.period,
+      teacherId: teacherId,
       date: this.date,
+      period: this.period,
       grade: this.grade,
       task: this.newTask,
-      check: false,
-      teacherId: teacherId
+      check: false
     };
   
     this.http.post('http://localhost:8080/add-tasks/add', taskData).subscribe({
       next: (response) => {
         console.log('Task added successfully:', response);
-        alert("Task added successfully!");
-        this.tasks.push(this.newTask);  // Add the new task to the list
-        this.newTask = '';             // Reset the input field
+        this.tasks.unshift(this.newTask); // Add the new task to the list
+        this.newTask = ''; // Reset the input field
+        this.loadTasks(); // Refresh the tasks list
       },
       error: (error) => {
         console.error('Error adding task:', error);
@@ -150,8 +157,6 @@ export class AddTasksPageComponent implements OnInit {
     });
   }
   
-
-
   removeOldTasks() {
     this.tasks = [];
   }

@@ -9,4 +9,7 @@ public interface AddTaskService {
     void updateTask(AddTask taskDTO);
     void deleteTask(Long taskId);
     List<AddTask> getAllTasksByTeacherId(Integer teacherId);
+    List<AddTask> getAllTasks();
+
+    List<AddTask> filterTasks(Integer teacherId, String date, Integer period, String grade);
 }

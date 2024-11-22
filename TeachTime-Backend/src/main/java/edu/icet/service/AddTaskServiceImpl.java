@@ -7,6 +7,7 @@ import edu.icet.repository.AddTaskRepository;
 import edu.icet.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AddTaskServiceImpl implements AddTaskService {
 
+    @Autowired
+    private AddTaskRepository addTaskRepository;
     private final AddTaskRepository taskRepository;
     private final TeacherRepository teacherRepository;
     private final ModelMapper modelMapper;
@@ -51,6 +54,33 @@ public class AddTaskServiceImpl implements AddTaskService {
         return tasks.stream()
                 .map(task -> modelMapper.map(task, AddTask.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AddTask> getAllTasks() {
+        return taskRepository.findAll()
+                .stream()
+                .map(task -> modelMapper.map(task, AddTask.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AddTask> filterTasks(Integer teacherId, String date, Integer period, String grade) {
+        List<AddTaskEntity> filteredTasks = taskRepository.findAll()
+                .stream()
+                .filter(task ->
+                        task.getTeacher().getTeacherId().equals(teacherId) &&
+                                task.getDate().equals(date) &&
+                                task.getPeriod().equals(period) &&
+                                task.getGrade().equalsIgnoreCase(grade))
+                .collect(Collectors.toList());
+        return filteredTasks.stream()
+                .map(task -> modelMapper.map(task, AddTask.class))
+                .collect(Collectors.toList());
+    }
+
+    public List<AddTaskEntity> getTasks(Integer teacherId, String date, Integer period, String grade) {
+        return addTaskRepository.findByTeacher_TeacherIdAndDateAndPeriodAndGrade(teacherId, date, period, grade);
     }
 
 }

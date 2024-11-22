@@ -39,5 +39,18 @@ public class AddTaskController {
         return taskService.getAllTasksByTeacherId(teacherId);
     }
 
+    @GetMapping("/get-all-tasks")
+    public List<AddTask> getAllTasks() {
+        return taskService.getAllTasks();
+    }
+
+    @GetMapping("/filter")
+    public List<AddTask> filterTasks(
+            @RequestParam Integer teacherId,
+            @RequestParam String date,
+            @RequestParam Integer period,
+            @RequestParam String grade) {
+        return taskService.filterTasks(teacherId, date, period, grade);
+    }
 
 }

@@ -8,5 +8,7 @@ import java.util.List;
 @Repository
 public interface AddTaskRepository extends JpaRepository<AddTaskEntity, Long> {
     // Custom method to find tasks by teacher ID
-    List<AddTaskEntity> findByTeacher_TeacherId(Integer teacherId);
+    List<AddTaskEntity> findByTeacher_TeacherIdAndDateAndPeriodAndGrade(
+            Integer teacherId, String date, Integer period, String grade);
+
 }
