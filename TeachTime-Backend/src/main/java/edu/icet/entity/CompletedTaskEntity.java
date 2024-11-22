@@ -35,3 +35,7 @@ public class CompletedTaskEntity {
     @JoinColumn(name = "teacher_id", referencedColumnName = "teacherId")
     private TeacherEntity teacher; // Many tasks can belong to one teacher
 }
+
+
+
+//Turn on Console insights in Settings to receive AI assistance for understanding and addressing console warnings and errors. Learn more

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-tasks-page',
   standalone: true,
@@ -21,7 +21,7 @@ export class AddTasksPageComponent implements OnInit {
   uncheckedTasks: any[] = [];
   newTask: string = '';
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient,private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -187,5 +187,57 @@ export class AddTasksPageComponent implements OnInit {
       (response) => {
         console.log('Profile updated successfully:', response);
       })
+
+
+      if (isChecked) {
+        // Map to the CompletedTask structure
+        const completedTask = {
+          period: task.period,
+          date: task.date,
+          grade: task.grade,
+          comTask: task.task,  // Assuming the task's name or description
+          teacherId: JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2
+        };
+    
+        // Send the POST request to add the completed task
+        this.http.post("http://localhost:8080/completed-task/add-task", completedTask).subscribe({
+          next: (response) => {
+            console.log('Task marked as completed successfully:', response);
+            alert('Task marked as completed!');
+                this.tasks = this.tasks.filter(task => !task.check); 
+          },
+          error: (error) => {
+            console.error('Error marking task as completed:', error);
+          }
+        });
+      }
   }
+
+
+  submitCompletedTasks(): void {
+    this.router.navigate(['completed-tasks-page']);
+    // const completedTasks = this.tasks.filter(task => task.check === true);
+  
+    // if (completedTasks.length === 0) {
+    //   alert('No tasks selected!');
+    //   return;
+    // }
+  
+    // const teacherId = JSON.parse(localStorage.getItem('loggedInUser') || '{}').id || 2;
+  
+    // // Send the completed tasks to the backend
+    // this.http.post('http://localhost:8080/completed-task/add-task', {
+    //   teacherId,
+    //   tasks: completedTasks
+    // }).subscribe({
+    //   next: () => {
+    //     alert('Tasks successfully marked as completed!');
+    //     this.tasks = this.tasks.filter(task => !task.check); // Remove completed tasks from view
+    //   },
+    //   error: (error) => {
+    //     console.error('Error submitting completed tasks:', error);
+    //   }
+    // });
+  }
+  
 }

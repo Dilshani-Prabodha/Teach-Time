@@ -1,25 +1,37 @@
 <app-nav-bar></app-nav-bar>
 <div class="blue-background">
+    <div class="border">
     <h1>Completed Tasks</h1>
     <div class="add-task-container">
-        
-    
-        <div class="task-input-section">
-            <label for="taskDate">Date:</label>
-            <input type="date" id="taskDate" class="date-input" />
-            
-            <label for="taskGrade">Grade:</label>
-            <input type="text" id="taskGrade" class="grade-input" placeholder="e.g., 8 - G" />
-        </div>
-        <div class="search-btn">
-            <button  class="add-task-button">Search</button>
-        </div>
-        
-        <!-- <div class="tasks-list">
-            <div *ngFor="let task of tasks" class="task-item">
-                <span class="task-text">{{ task.text }}</span>
-                <button class="task-button reassign">View</button>
-            </div>
-        </div> [(ngModel)]="newTask" (click)="addTask()"-->
+      <div class="task-input-section">
+        <label for="taskDate">Date:</label>
+        <input type="date" id="taskDate" class="date-input" [(ngModel)]="date" />
+  
+        <label for="taskGrade">Grade:</label>
+        <input type="text" id="taskGrade" class="grade-input" [(ngModel)]="grade" placeholder="e.g., 8 - G" />
+      </div>
+      <div class="search-btn">
+        <button class="add-task-button" (click)="searchCompletedTasks()">Search</button>
+      </div>
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Grade</th>
+            <th>Period</th>
+            <th>Task</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of completedTasks">
+            <td>{{ task.date }}</td>
+            <td>{{ task.grade }}</td>
+            <td>{{ task.period }}</td>
+            <td>{{ task.task }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 </div>
+  </div>
+  

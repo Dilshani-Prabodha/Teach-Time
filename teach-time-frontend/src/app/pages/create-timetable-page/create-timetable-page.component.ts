@@ -73,6 +73,6 @@ submitTimetable() {
 }
 
   navigateToConfirmTimTblPage(){
-    this.router.navigate(['confirm-time-table-page']);
+    this.router.navigate(['home-page']);
   }
 }

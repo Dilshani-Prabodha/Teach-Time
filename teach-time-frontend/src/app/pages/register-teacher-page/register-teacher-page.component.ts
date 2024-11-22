@@ -48,7 +48,7 @@ export class RegisterTeacherPageComponent {
         alert('You Registered Successfully!!!');
         // Store the registered teacher's details in local storage
         localStorage.setItem('loggedInUser', JSON.stringify(data));
-        this.router.navigate(['create-time-table-page']);
+        this.router.navigate(['']);
       },
       error: (err) => {
         console.error('Error registering teacher:', err);

@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { LogInPageComponent } from './pages/log-in-page/log-in-page.component';
 import { RegisterTeacherPageComponent } from './pages/register-teacher-page/register-teacher-page.component';
 import { NavBarComponent } from './common/nav-bar/nav-bar.component';
@@ -11,6 +11,7 @@ import { AddTasksPageComponent } from './pages/add-tasks-page/add-tasks-page.com
 import { CompletedTasksPageComponent } from './pages/completed-tasks-page/completed-tasks-page.component';
 import { IncompletedTasksPageComponent } from './pages/incompleted-tasks-page/incompleted-tasks-page.component';
 import { ReassignTasksPageComponent } from './pages/reassign-tasks-page/reassign-tasks-page.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     {
@@ -60,3 +61,9 @@ export const routes: Routes = [
         component: EditTeacherProfilePageComponent
     }
 ];
+
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutingModule { }
